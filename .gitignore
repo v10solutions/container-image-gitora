@@ -1,0 +1,10 @@
+#
+# Container Image Gitora
+#
+
+.nova/
+.vscode/
+*.env
+**/.DS_Store
+
+.output/

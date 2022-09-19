@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+Container Image Gitora
+-->
+
+<web-app
+xmlns="http://java.sun.com/xml/ns/javaee"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+version="3.0">
+	<display-name>Gitblit</display-name>
+
+	<env-entry>
+		<description>The base folder is used to specify the root location of your Gitblit data.</description>
+		<env-entry-name>baseFolder</env-entry-name>
+		<env-entry-type>java.lang.String</env-entry-type>
+		<env-entry-value>/opt/tomcat/data/gitblit</env-entry-value>
+	</env-entry>
+
+	<listener>
+		<listener-class>com.gitblit.servlet.GitblitContext</listener-class>
+	</listener>
+
+	<session-config>
+		<tracking-mode>COOKIE</tracking-mode>
+	</session-config>
+
+	<filter>
+		<filter-name>guiceFilter</filter-name>
+		<filter-class>com.google.inject.servlet.GuiceFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>guiceFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<servlet>
+		<servlet-name>Faces Servlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>/faces/*</url-pattern>
+	</servlet-mapping>
+</web-app>
